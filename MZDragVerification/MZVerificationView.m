@@ -1,6 +1,6 @@
 //
 //  MZVerificationView.m
-//  Meow
+//  MZDragVerification
 //
 //  Created by mizu-bai on 2021/4/21.
 //
