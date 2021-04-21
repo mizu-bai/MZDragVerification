@@ -18,5 +18,5 @@ If you drag the fish onto the cat, then
 
 However, when the cat cannot eat the fish 
 
-<img src="https://github.com/mizu-bai/MZDragVerification/blob/main/README.assets/screenshot-success.png" height=50% width=50% alt="Success">
+<img src="https://github.com/mizu-bai/MZDragVerification/blob/main/README.assets/screenshot-fail.png" height=50% width=50% alt="Success">
 
