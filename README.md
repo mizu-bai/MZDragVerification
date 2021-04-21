@@ -20,4 +20,6 @@ However, when the cat cannot eat the fish
 
 <img src="https://github.com/mizu-bai/MZDragVerification/blob/main/README.assets/screenshot-fail.png" height=50% width=50% alt="Success">
 
+View as gif
+
 <img src="https://github.com/mizu-bai/MZDragVerification/blob/main/README.assets/demo.gif" height=50% width=50% alt="Success">
