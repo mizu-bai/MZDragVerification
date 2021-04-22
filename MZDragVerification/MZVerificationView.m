@@ -115,7 +115,8 @@
         [self.buttonBullet setHighlighted:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.buttonBullet.transform = CGAffineTransformIdentity;
-            [self awakeFromNib];
+            // if you want to refresh automatically, awake this view
+            // [self awakeFromNib];
         });
     }
     if (self.verify) {
