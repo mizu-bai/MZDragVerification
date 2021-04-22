@@ -10,8 +10,8 @@
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet MZVerificationView *verificationView;
-@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property(weak, nonatomic) IBOutlet MZVerificationView *verificationView;
+@property(weak, nonatomic) IBOutlet UILabel *labelTitle;
 
 - (IBAction)buttonRefresh:(id)sender;
 
@@ -38,6 +38,5 @@
     [self.labelTitle setText:@"给猫猫球喂小鱼验证哦"];
     [self.verificationView awakeFromNib];
 }
-
 
 @end
