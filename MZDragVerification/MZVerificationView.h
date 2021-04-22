@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MZVerificationView : UIView
 
 @property(nonatomic, copy) BOOL (^verify)(BOOL result);
-@property(nonatomic, assign) BOOL verificationSuccess;
 
 @end
 

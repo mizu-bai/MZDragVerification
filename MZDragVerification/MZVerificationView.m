@@ -16,6 +16,7 @@
 @property(nonatomic, strong) UIButton *buttonBullet;
 @property(nonatomic, strong) UIButton *buttonTarget;
 @property(nonatomic, assign) BOOL firstTouchInBullet;
+@property(nonatomic, assign) BOOL verificationSuccess;
 
 @end
 
@@ -65,6 +66,7 @@
     }
     [self.buttonBullet setHighlighted:NO];
     [self.buttonBullet setEnabled:YES];
+
 }
 
 - (CGPoint)randomPointWithSize:(CGSize)size {
@@ -74,9 +76,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    if (CGRectContainsPoint(self.buttonBullet.frame, point)) {
-        self.firstTouchInBullet = YES;
-    }
+    self.firstTouchInBullet = CGRectContainsPoint(self.buttonBullet.frame, point);
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -85,23 +85,20 @@
     }
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    CGFloat tx = point.x - self.buttonBullet.frame.origin.x - self.buttonBullet.frame.size.width * 0.5;
-    if (self.buttonBullet.frame.origin.x + tx < 0) {
-        tx = 0;
-    } else if (self.buttonBullet.frame.origin.x + self.buttonBullet.frame.size.width + tx > self.frame.size.width) {
-        NSLog(@"越过右边界");
-        tx = self.frame.size.width - self.buttonBullet.frame.size.width * 0.5;
-        NSLog(@"%f", tx);
+    CGFloat tx = point.x - self.buttonBullet.center.x;
+    if (point.x < 0) {
+        tx = 0 - self.buttonBullet.center.x;
+    } else if (point.x > kWidth) {
+        tx = kWidth - self.buttonBullet.center.x;
     }
-    CGFloat ty = point.y - self.buttonBullet.frame.origin.y - self.buttonBullet.frame.size.height * 0.5;
-    if (self.buttonBullet.frame.origin.y + ty < 0) {
-        ty = 0;
+
+    CGFloat ty = point.y - self.buttonBullet.center.y;
+    if (point.y < 0) {
+        ty = 0 - self.buttonBullet.center.y;
+    } else if (point.y > kHeight) {
+        ty = kHeight - self.buttonBullet.center.y;
     }
-    if (self.buttonBullet.frame.origin.y + self.buttonBullet.frame.size.width + ty > kHeight) {
-        ty = kHeight - self.buttonBullet.frame.size.height;
-    }
-    [self.buttonBullet setTransform:CGAffineTransformTranslate(self.buttonBullet.transform, tx, ty)];
-    NSLog(@"%@", NSStringFromCGRect(self.buttonBullet.frame));
+    [self.buttonBullet setTransform:CGAffineTransformMakeTranslation(tx, ty)];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
